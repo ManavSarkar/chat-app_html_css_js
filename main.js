@@ -1,28 +1,3 @@
-// <!-- The core Firebase JS SDK is always required and must be listed first -->
-// <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-
-// <!-- TODO: Add SDKs for Firebase products that you want to use
-//      https://firebase.google.com/docs/web/setup#available-libraries -->
-// <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
-
-// <script>
-//   // Your web app's Firebase configuration
-//   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-//   var firebaseConfig = {
-//     apiKey: "AIzaSyB4m_yGbcmP2pJeBKlYvtoW5VAXgFM-Svc",
-//     authDomain: "chat-app-tutorial-e0e87.firebaseapp.com",
-//     projectId: "chat-app-tutorial-e0e87",
-//     storageBucket: "chat-app-tutorial-e0e87.appspot.com",
-//     messagingSenderId: "356136821162",
-//     appId: "1:356136821162:web:f680b8ce26dd14bf3a4bd3",
-//     measurementId: "G-GVETP4ZKRF"
-//   };
-//   // Initialize Firebase
-//   firebase.initializeApp(firebaseConfig);
-//   firebase.analytics();
-// </script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 var firebaseConfig = {
     apiKey: "AIzaSyB4m_yGbcmP2pJeBKlYvtoW5VAXgFM-Svc",
@@ -99,5 +74,23 @@ db.collection('messages')
     <p>${doc.data().message}</p>
     `
     document.querySelector('#messages').prepend(message)
+  })
+})
+document.querySelector('#clear').addEventListener('click',()=>{
+  db.collection('messages')
+  .get()
+  .then(snapshot => {
+    snapshot.forEach(doc => {
+      db.collection('messages').doc(doc.id).delete()
+      .then(()=>{
+        console.log('Document successfully deleted')
+      })
+      .catch(error =>{
+        console.error('Error removing document :${error}')
+      })
+    })
+  })
+  .catch(error =>{
+    console.log('Error getting document ${error}')
   })
 })
