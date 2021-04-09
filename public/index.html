@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat App</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+	
+	<link rel="stylesheet"  href="main.css">
+</head>
+<body>
+	
+	<div id="container">
+		<div id="user-options">
+			<div>Hi, <span id="name"></span></div>
+			<div id="change-name">change name</div>
+		</div>
+	
+		<form id="message-form">
+			<input type="text" id="message-input" placeholder="message" required>
+			<button class="orange-button">send</button>
+		</form>
+		<div id="messages"></div>
+		<button id="clear" class="purple-button">Clear All Messages</button>
+	</div>
+<script src="main.js"></script>
+</body>
+</html>
